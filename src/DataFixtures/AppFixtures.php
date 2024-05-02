@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Country;
+use App\Entity\Days;
 use App\Entity\MusicGenre;
+use App\Entity\Scene;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use SplFileObject;
@@ -28,14 +30,34 @@ class AppFixtures extends Fixture
             }
         }
 
+
         $musicgenresName= ['rock', 'pop', 'jazz', 'classic', 'punk', 'metal', 'grunge', 'pop-rock', 'folk'];
-        $genres=[];
+        // $genres=[];
 
         foreach ($musicgenresName as $musicgenre){
             $genre = new MusicGenre();
             $genre->setGenreName($musicgenre);
-            $genres[] = $genre;
+            // $genres[] = $genre;
             $manager->persist($genre);
+        }
+
+
+        $sceneNames= ['Scène Emergente', 'Scène Tremplin', 'Scène Principale'];
+
+        foreach ($sceneNames as $sceneName){
+            $scene = new Scene();
+            $scene->setSceneName($sceneName);
+            $manager->persist($scene);
+        }
+
+
+
+        $dayNames= ['Vendredi 27 Novembre', 'Samedi 28 Novembre', 'Dimanche 29 Novembre'];
+
+        foreach ($dayNames as $dayName){
+            $day = new Days();
+            $day->setDay($dayName);
+            $manager->persist($day);
         }
 
         $manager->flush();

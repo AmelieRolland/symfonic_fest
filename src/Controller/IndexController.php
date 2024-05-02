@@ -15,4 +15,13 @@ class IndexController extends AbstractController
             'controller_name' => 'Symfonic Fest',
         ]);
     }
+
+    #[Route('/{id}', name: 'app_progday')]
+
+    public function progday($id): Response
+    {
+        return $this->render('index/progday.html.twig', [
+            'id' => $id,
+        ]);
+    }
 }
