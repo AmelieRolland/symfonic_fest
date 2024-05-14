@@ -34,6 +34,9 @@ class BandRegister
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'bandRegister')]
+    private ?ProgDay $progDay = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +110,18 @@ class BandRegister
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getProgDay(): ?ProgDay
+    {
+        return $this->progDay;
+    }
+
+    public function setProgDay(?ProgDay $progDay): static
+    {
+        $this->progDay = $progDay;
 
         return $this;
     }

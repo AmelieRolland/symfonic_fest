@@ -57,8 +57,11 @@ class AppFixtures extends Fixture
         foreach ($dayNames as $dayName){
             $day = new Days();
             $day->setDay($dayName);
+            $day->setImgFileName('affiche.jpg');
             $manager->persist($day);
         }
+
+        
 
         $manager->flush();
     }

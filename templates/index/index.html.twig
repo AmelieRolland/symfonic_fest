@@ -21,18 +21,14 @@
     <h1 class="text-7xl pt-20">{{ controller_name }}</h1>
 
     <div class="gap-8 columns-3 pt-20">
-        <div><a href="progday.html.twig">
-            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/music-festival-poster-template-72c766faefdc318c77abb5d73b50f856_screen.jpg?ts=1636968230" alt="">
-        </a>
-        </div>
 
+    {% for day in days %}
         <div>
-            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/music-festival-poster-template-72c766faefdc318c77abb5d73b50f856_screen.jpg?ts=1636968230" alt="">
+            <a href="{{ path('app_progday', { id: day.id }) }}">
+                <img class="w-full h-auto" src="{{asset('img/' ~ day.imgFileName)}}" alt="affiche">
+            </a>
         </div>
-
-        <div>
-            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/music-festival-poster-template-72c766faefdc318c77abb5d73b50f856_screen.jpg?ts=1636968230" alt="">
-        </div>
+    {% endfor %}
     
     
     
