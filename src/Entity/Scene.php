@@ -24,9 +24,16 @@ class Scene
     #[ORM\ManyToMany(targetEntity: ProgDay::class, mappedBy: 'scene')]
     private Collection $progDays;
 
+    /**
+     * @var Collection<int, ProgDay>
+     */
+    #[ORM\OneToMany(targetEntity: ProgDay::class, mappedBy: 'scene')]
+    private Collection $progDay;
+
     public function __construct()
     {
         $this->progDays = new ArrayCollection();
+        $this->progDay = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -49,16 +56,16 @@ class Scene
     /**
      * @return Collection<int, ProgDay>
      */
-    public function getProgDays(): Collection
+    public function getProgDay(): Collection
     {
-        return $this->progDays;
+        return $this->progDay;
     }
 
     public function addProgDay(ProgDay $progDay): static
     {
-        if (!$this->progDays->contains($progDay)) {
-            $this->progDays->add($progDay);
-            $progDay->addScene($this);
+        if (!$this->progDay->contains($progDay)) {
+            $this->progDay->add($progDay);
+            $progDay->setScene($this);
         }
 
         return $this;
@@ -66,10 +73,14 @@ class Scene
 
     public function removeProgDay(ProgDay $progDay): static
     {
-        if ($this->progDays->removeElement($progDay)) {
-            $progDay->removeScene($this);
+        if ($this->progDay->removeElement($progDay)) {
+            // set the owning side to null (unless already changed)
+            if ($progDay->getScene() === $this) {
+                $progDay->setScene(null);
+            }
         }
 
         return $this;
     }
+
 }

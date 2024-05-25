@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BandRegister{% endblock %}
+
+{% block body %}
+    <h1>BandRegister</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ band_register.id }}</td>
+            </tr>
+            <tr>
+                <th>Band_name</th>
+                <td>{{ band_register.bandName }}</td>
+            </tr>
+            <tr>
+                <th>Creation_year</th>
+                <td>{{ band_register.creationYear }}</td>
+            </tr>
+            <tr>
+                <th>ImgFileName</th>
+                <td>{{ band_register.imgFileName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ band_register.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_band_register_crud_index') }}">back to list</a>
+
+    <a href="{{ path('app_band_register_crud_edit', {'id': band_register.id}) }}">edit</a>
+
+    {{ include('bandregistercrud/_delete_form.html.twig') }}
+{% endblock %}

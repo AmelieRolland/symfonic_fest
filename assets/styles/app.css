@@ -5,3 +5,23 @@
 body {
     background-color: rgb(244, 236, 216);
 }
+
+#band_register_band_name{
+    border-radius: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 300px;
+}
+
+.bandname label {
+    font-size: 30px;
+}
+
+.monTitre{
+    font-size: 50px;
+}
+
+.bandname{
+    display: flex;
+    flex-direction: column;
+}

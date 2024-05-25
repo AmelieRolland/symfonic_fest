@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfonic Fest{% endblock %}
+
+{% block body %}
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> #}
+
+    {% block header %}
+
+        {% block navbar %}
+            {{ parent() }}
+        {% endblock %}
+
+    {% endblock %}
+
+
+<div class="container mx-auto">
+
+    <div class="gap-8 columns-3 pt-20">
+
+        <div>
+           <h1>{{ bandRegister.bandName }}</h1>
+        </div>
+    
+    
+    
+    </div>
+
+</div>
+{% endblock %}

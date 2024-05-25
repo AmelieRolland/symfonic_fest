@@ -21,6 +21,19 @@ class BandRegisterRepository extends ServiceEntityRepository
         parent::__construct($registry, BandRegister::class);
     }
 
+
+
+    public function findUniqueBandNames(): array
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->select('b.band_name')
+            ->distinct();
+            // ->groupBy('b.band_name');
+
+        return $qb->getQuery()
+                  ->getResult();
+    }
+
     //    /**
     //     * @return BandRegister[] Returns an array of BandRegister objects
     //     */

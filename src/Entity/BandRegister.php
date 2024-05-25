@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BandRegisterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,8 +36,17 @@ class BandRegister
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'bandRegister')]
-    private ?ProgDay $progDay = null;
+    /**
+     * @var Collection<int, BandImages>
+     */
+    #[ORM\OneToMany(targetEntity: BandImages::class, mappedBy: 'band')]
+    private Collection $bandImages;
+
+    public function __construct()
+    {
+        $this->bandImages = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -114,15 +125,47 @@ class BandRegister
         return $this;
     }
 
-    public function getProgDay(): ?ProgDay
+    /**
+     * @return Collection<int, BandImages>
+     */
+    public function getBandImages(): Collection
     {
-        return $this->progDay;
+        return $this->bandImages;
     }
 
-    public function setProgDay(?ProgDay $progDay): static
+    public function addBandImage(BandImages $bandImage): static
     {
-        $this->progDay = $progDay;
+        if (!$this->bandImages->contains($bandImage)) {
+            $this->bandImages->add($bandImage);
+            $bandImage->setBand($this);
+        }
 
         return $this;
     }
+
+    public function removeBandImage(BandImages $bandImage): static
+    {
+        if ($this->bandImages->removeElement($bandImage)) {
+            if ($bandImage->getBand() === $this) {
+                $bandImage->setBand(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+    // public function removeProgDay(ProgDay $progDay): self
+    // {
+    //     if ($this->progDay->removeElement($progDay)) {
+    //         if ($progDay->getBandRegister() === $this) {
+    //             $progDay->setBandRegister(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+    
+
 }

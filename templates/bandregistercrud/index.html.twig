@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BandRegister index{% endblock %}
+
+{% block body %}
+    <h1>BandRegister index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Band_name</th>
+                <th>Creation_year</th>
+                <th>ImgFileName</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for band_register in band_registers %}
+            <tr>
+                <td>{{ band_register.id }}</td>
+                <td>{{ band_register.bandName }}</td>
+                <td>{{ band_register.creationYear }}</td>
+                <td>{{ band_register.imgFileName }}</td>
+                <td>{{ band_register.description }}</td>
+                <td>
+                    <a href="{{ path('app_band_register_crud_show', {'id': band_register.id}) }}">show</a>
+                    <a href="{{ path('app_band_register_crud_edit', {'id': band_register.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_band_register') }}">Create new</a>
+{% endblock %}

@@ -6,6 +6,7 @@ use App\Entity\Country;
 use App\Entity\Days;
 use App\Entity\MusicGenre;
 use App\Entity\Scene;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use SplFileObject;
@@ -60,6 +61,12 @@ class AppFixtures extends Fixture
             $day->setImgFileName('affiche.jpg');
             $manager->persist($day);
         }
+
+        $admin = new User();
+        $admin ->setEmail("admin@symfonic.fr");
+        $admin ->setRoles(["ROLE_ADMIN"]);
+        $admin ->setPassword("admin");
+        $manager->persist($admin);
 
         
 

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit BandRegister{% endblock %}
+
+{% block body %}
+    <h1>Edit BandRegister</h1>
+
+    {{ include('bandregistercrud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_band_register_crud_index') }}">back to list</a>
+
+    {{ include('bandregistercrud/_delete_form.html.twig') }}
+{% endblock %}

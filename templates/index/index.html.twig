@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Symfonic Fesy{% endblock %}
+{% block title %}Symfonic Fest{% endblock %}
 
 {% block body %}
-<style>
+{# <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+</style> #}
 
     {% block header %}
 
@@ -18,14 +18,18 @@
 
 
 <div class="container mx-auto">
-    <h1 class="text-7xl pt-20">{{ controller_name }}</h1>
+    <h1 class="text-7xl pt-20 pb-20">{{ controller_name }}</h1>
+
+    {% if user %}
+        <h2 class="text-6xl">Hey {{ user.email }} ! It's nice to see you.</h2>
+    {% endif %}
 
     <div class="gap-8 columns-3 pt-20">
 
     {% for day in days %}
         <div>
             <a href="{{ path('app_progday', { id: day.id }) }}">
-                <img class="w-full h-auto" src="{{asset('img/' ~ day.imgFileName)}}" alt="affiche">
+                <img class="w-full h-auto" src="{{asset('uploads/' ~ day.imgFileName)}}" alt="affiche">
             </a>
         </div>
     {% endfor %}
