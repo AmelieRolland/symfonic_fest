@@ -27,10 +27,10 @@ La table progday réunit donc : le groupe, la scene, le jour, l’heure.
 * Events subscriber : hasheur de mot de passe en envoi d’email à chaque inscription d’un nouvel utilisateur.
 
 ### **Affichage** : 
-accueil : boucle sur la table ‘day’ avec l’image correspondant à chaque journée
-Au clic sur l’image, on atterrit sur la page de programmation correspondant avec les détails (fiches des  groupes programmés)
+accueil : boucle sur la table ‘day’ avec l’image correspondant à chaque journée\\
+Au clic sur l’image, on atterrit sur la page de programmation correspondant avec les détails (fiches des  groupes programmés)\\
 Au clic sur chaque fiche de ces groupes, on atterrit sur la page ‘band’ avec les détails du groupe.
-Ajouts de messages flash.
+Ajouts de messages flash.\\
 Petite gymnastique pour associer toutes ces données!
 
 ### **Fixtures** : 
