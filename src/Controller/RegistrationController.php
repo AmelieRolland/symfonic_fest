@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Event\MailToUserRegisteredEvent;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Services\Mailing\RegistrationConfirmed;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -16,7 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class RegistrationController extends AbstractController
 {
     #[Route('/registration', name: 'app_registration')]
-    public function register(Request $request, EntityManagerInterface $em, EventDispatcherInterface $eventDispatcher): Response
+
+    // private $userRepository;
+    // public function __construct(UserRepository $userRepository)
+    // {
+    //     $this->userRepository = $userRepository;
+    // }
+    public function register(Request $request, EntityManagerInterface $em, EventDispatcherInterface $eventDispatcher, UserRepository $userRepo): Response
     {
         $user = new User();
         $role[] = 'ROLE_USER';
@@ -24,6 +31,12 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $existingUser = $userRepo->findOneByEmail($user->getEmail());
+            if ($existingUser) {
+                $this->addFlash('error', 'Un compte a déjà été créé avec cet email! :(');
+                return $this->redirectToRoute('app_registration');
+            }
            
             $password = $form->get('password')->getData();
             
@@ -31,6 +44,8 @@ class RegistrationController extends AbstractController
             $user->setRoles($role);
 
             $em->persist($user);
+
+
             $em->flush();
 
             $eventDispatcher->dispatch(

@@ -6,6 +6,7 @@ use App\Entity\BandRegister;
 use App\Entity\Days;
 use App\Entity\ProgDay;
 use App\Repository\DaysRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -37,10 +38,14 @@ class IndexController extends AbstractController
 
     #[Route('band/{id}', name: 'app_band')]
 
-    public function bandInfo(BandRegister $bandRegister): Response
+    public function bandInfo(BandRegister $bandRegister, EntityManagerInterface $em): Response
     {
+        $progDayRepository = $em->getRepository(ProgDay::class);
+        $progDay = $progDayRepository->findOneBy(['bandRegister' => $bandRegister]);
+
         return $this->render('index/band.html.twig', [
             'bandRegister' => $bandRegister,
+            'progDay' => $progDay
 
         ]);
     }
