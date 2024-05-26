@@ -22,10 +22,10 @@
         
     <div class="flex justify-center py-4 md:py-8 flex-wrap">
 
-        {% set displayedBands = [] %} 
+        {% set allBands = [] %} 
         {% for progDay in days.progDays %}
-            {% if progDay.bandRegister.bandName not in displayedBands %}
-             {% set displayedBands = displayedBands|merge([progDay.bandRegister.bandName]) %}
+            {% if progDay.bandRegister.bandName not in allBands %}
+             {% set allBands = allBands|merge([progDay.bandRegister.bandName]) %}
 
         <div class=" w-96 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
