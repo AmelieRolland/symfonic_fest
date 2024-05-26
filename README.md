@@ -52,6 +52,8 @@ J’ai peu travaillé le front, l’union de twig et tailwind m’a été compli
 ## Améliorations à apporter: 
 J’aimerai travailler la partie front davantage, le manque de temps ne me l’a pas permis. J’aimerai mieux exploiter les events. Il y a beaucoup de fonctionnalités que j’aurai aimé travailler (l’option ‘se souvenir de moi’ par exemple), ainsi que la sécurité en général et l’affichage (éviter la page d’erreur ‘access denied’ si j’essaie d’entrer dans la partie admin par exemple).
 
+J'aurai aimé aussi pouvoir faire une interface client, avec une gestion de compte! Je pense continer à travailler ça.
+
 
 
 
