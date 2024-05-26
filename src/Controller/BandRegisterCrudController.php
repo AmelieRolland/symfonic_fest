@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\BandRegister;
-use App\Entity\ProgDay;
 use App\Form\BandRegister1Type;
 use App\Repository\BandRegisterRepository;
 use Doctrine\ORM\EntityManagerInterface;

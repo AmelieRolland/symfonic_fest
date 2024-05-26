@@ -45,7 +45,7 @@ Pour la table ‘pays’, j’ai trouvé un fichier csv d’une table déjà exi
 
 Je suis passée par des erreurs concernant mes relations de tables.
 
-Pour la page ‘progday’, qui affiche les groupes qui jouent le jour sélectionné,  j’ai réalisé que si j’avais un groupe qui jouait deux fois le même jour (why not!) Il s'affichait deux fois. J’ai trouvé, grâce à un sujet stackoverflow un peu ancien, une méthode pour trier ces données avec un tableau directement sur la page twig. It works. Mais je pense qu’il y avait plus simple (passer par le repository par exemple avec un ‘SELECT DISTINCT’ ou quelque chose comme ça).
+Pour la page ‘progday’, qui affiche les groupes qui jouent le jour sélectionné,  j’ai réalisé que si j’avais un groupe qui jouait deux fois le même jour (why not!) Il s'affichait deux fois. J’ai trouvé, grâce à un sujet stackoverflow un peu ancien, une méthode pour trier ces données avec un tableau directement sur la page twig. It works. Mais je pense qu’il y avait plus simple (passer par le repository par exemple avec un ‘SELECT DISTINCT’ ou quelque chose comme ça. Ou alors, j'avais créé une fonction 'findUnique...' dans le repository de BandRegister que je n'avais finalement pas utilisé mais que j'ai laissé, j'aurai pu l'utiliser ici, je viens d'y penser).
 
 J’ai peu travaillé le front, l’union de twig et tailwind m’a été compliquée à prendre en main, mais j’ai voulu avoir un beau formulaire alors j’en ai trouvé un déjà codé avec les classes tailwind; j’ai eu beaucoup d’erreurs à ce moment là (impossible de logout dans mes souvenirs) à cause d’un token csrf non valide; j’ai mis du temps avant de me souvenir qu’il y avait un champs hidden prévu pour le token que je devais intégrer moi même dans le formulaire.
 
