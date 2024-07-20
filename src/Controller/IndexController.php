@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class IndexController extends AbstractController
 {
-    #[Route('/', name: 'app_homepage')]
+    #[Route('/', name: 'app_index')]
     #[Route('/index', name: 'app_index')]
     public function index(DaysRepository $daysRepository): Response
     {
