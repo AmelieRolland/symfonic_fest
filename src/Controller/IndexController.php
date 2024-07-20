@@ -13,6 +13,19 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class IndexController extends AbstractController
 {
+    #[Route('/', name: 'app_homepage')]
+    public function homepage(DaysRepository $daysRepository): Response
+    {
+        $user = $this->getUser();
+
+        $days = $daysRepository->findAll();
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'Symfonic Fest',
+            'user' => $user,
+            'days' => $days
+        ]);
+    }
+    
     #[Route('/index', name: 'app_index')]
     public function index(DaysRepository $daysRepository): Response
     {
